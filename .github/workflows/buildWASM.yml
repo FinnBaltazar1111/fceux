@@ -1,0 +1,33 @@
+name: Build for WebAssembly
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Emscripten toolchain
+        uses: mymindstorm/setup-emsdk@v14
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install build-essential libsdl2-dev qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools liblua5.1-dev libx264-dev libx265-dev ffmpeg libarchive-dev libminizip-dev minizip zlib1g-dev mesa-utils
+
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          emcmake cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+          emmake make -j${nproc}
+          emcc -o fceux.html ... -sWASM={0,1} -sSINGLE_FILE
+
+      - name: Release
+        run: |
+          gh release create v2.6.6_wasm fceux.html
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash  
