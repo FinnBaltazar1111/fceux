@@ -13,6 +13,7 @@ if ( ${QT6} )
 	set( QT 6 )
 endif()
 
+
 if (NOT DEFINED QT)
 	message( STATUS "Attempting to determine Qt Version...")
 	find_package( Qt6 COMPONENTS Core QUIET)
@@ -35,7 +36,7 @@ if ( ${FCEU_PROFILER_ENABLE} )
 	add_definitions( -D__FCEU_PROFILER_ENABLE__ )
 endif()
 
-if ( ${QT} EQUAL 6 )
+if ( QT EQUAL 6 )
 	message( STATUS "GUI Frontend: Qt6")
 	set( Qt Qt6 )
 	find_package( Qt6 REQUIRED COMPONENTS Widgets OpenGL OpenGLWidgets)
