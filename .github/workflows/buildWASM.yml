@@ -9,6 +9,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+
       - name: Setup Emscripten toolchain
         uses: mymindstorm/setup-emsdk@v14
 
@@ -16,6 +17,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install build-essential libsdl2-dev qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools liblua5.1-dev libx264-dev libx265-dev ffmpeg libarchive-dev libminizip-dev minizip zlib1g-dev mesa-utils
+          sudo find /usr -name "Qt5Config.cmake"
 
       - name: Build
         run: |
