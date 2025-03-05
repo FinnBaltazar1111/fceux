@@ -13,6 +13,8 @@ if ( ${QT6} )
 	set( QT 6 )
 endif()
 
+set( QT 5 )
+
 
 if (NOT DEFINED QT)
 	message( STATUS "Attempting to determine Qt Version...")
