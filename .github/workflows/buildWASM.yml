@@ -22,7 +22,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          emcmake cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DQt5_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DQt5Widgets_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets -DQt5OpenGL_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5OpenGL -DQt5Gui_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui -DQt5Core_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5Core ..
+          emcmake cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DQt5_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5 -DQt5Widgets_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets -DQt5OpenGL_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5OpenGL -DQt5Gui_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5Gui -DQt5Core_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt5Core -DZLIB_LIBRARY=/usr/lib/x86_64-linux-gnu/libz.so ..
           emmake make -j${nproc}
           emcc -o fceux.html ... -sWASM={0,1} -sSINGLE_FILE
 
