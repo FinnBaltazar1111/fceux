@@ -21,7 +21,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          emcmake cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DQt5_DIR=/usr/lib/cmake/Qt5 ..
+          emcmake cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DQt5_DIR=/usr/lib64/cmake/Qt5/Qt5Config.cmake ..
           emmake make -j${nproc}
           emcc -o fceux.html ... -sWASM={0,1} -sSINGLE_FILE
 
