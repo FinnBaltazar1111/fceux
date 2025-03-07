@@ -17,7 +17,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install build-essential libsdl2-dev qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools liblua5.1-dev libx264-dev libx265-dev ffmpeg libarchive-dev libminizip-dev libminizip1 minizip zlib1g-dev mesa-utils pkgconf
-          sudo find /usr/lib -name "*zip*"
+          sudo wget https://raw.githubusercontent.com/bminor/glibc/refs/heads/master/bits/libc-header-start.h /usr/include/bits/libc-header-start.h
 
       - name: Build
         run: |
