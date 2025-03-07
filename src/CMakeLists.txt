@@ -200,12 +200,20 @@ else(WIN32)
   endif()
 
   # Check for libminizip
-  pkg_check_modules( MINIZIP REQUIRED minizip)
+  find_library(MINIZIP_LIBRARY minizip PATHS /usr/lib/x86_64-linux-gnu)
+  find_path(MINIZIP_INCLUDE_DIR minizip.h PATHS /usr/include)
 
-  if ( ${MINIZIP_FOUND} )
+  if(MINIZIP_LIBRARY AND MINIZIP_INCLUDE_DIR)
+    	set(MINIZIP_FOUND TRUE)
+  else()
+	set(MINIZIP_FOUND FALSE)
+  endif()
+
+  if ( MINIZIP_FOUND )
 	  message( STATUS "Using System minizip ${MINIZIP_VERSION}" )
 	  add_definitions( -D_SYSTEM_MINIZIP ${MINIZIP_CFLAGS} )
   endif()
+
 
   pkg_check_modules( LIBARCHIVE libarchive)
 
