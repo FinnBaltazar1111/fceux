@@ -267,9 +267,10 @@ else(WIN32)
   endif()
 
   # Check for SDL2
-  pkg_check_modules( SDL2 REQUIRED sdl2)
+  find_library(SDL2_LIBRARY SDL2 PATHS /usr/lib/x86_64-linux-gnu)
+  find_path(SDL2_INCLUDE_DIR SDL.h PATHS /usr/include/SDL2)
 
-  if ( ${SDL2_FOUND} )
+  if ( SDL2_LIBRARY AND SDL2_INCLUDE_DIR )
 	  add_definitions( ${SDL2_CFLAGS} -D__SDL__ )
   endif()
 
