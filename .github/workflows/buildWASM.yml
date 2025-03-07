@@ -16,10 +16,13 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install build-essential libsdl2-dev qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools liblua5.1-dev libx264-dev libx265-dev ffmpeg libarchive-dev libminizip-dev libminizip1 minizip zlib1g-dev mesa-utils pkgconf
-          git clone https://github.com/bminor/glibc.git
-          sudo cp -r glibc/bits /usr/include/bits
-          rm -rf glibc
+          sudo apt install build-essential libsdl2-dev qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools liblua5.1-dev libx264-dev libx265-dev ffmpeg libarchive-dev libminizip-dev libminizip1 minizip zlib1g-dev mesa-utils pkgconf tar
+          wget https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.7-4.6/+archive/ics-plus-aosp/sysroot/usr/include/sys.tar.gz
+          mkdir /usr/include/sys
+          sudo tar xf x86_64-linux-glibc2.7-4.6-ics-plus-aosp-sysroot-usr-include-sys.tar.gz -C /usr/include/sys
+          wget https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.7-4.6/+archive/ics-plus-aosp/sysroot/usr/include/bits.tar.gz
+          mkdir /usr/include/bits
+          sudo tar xf bits.tar.gz /usr/include/bits
 
       - name: Build
         run: |
