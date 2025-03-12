@@ -1,12 +1,6 @@
 #ifndef __FCEU_SDL_H
 #define __FCEU_SDL_H
 
-#if _SDL2
-#include <SDL2/SDL.h>
-#else
-#include <SDL.h>
-#endif
-
 #include "Qt/main.h"
 #include "Qt/dface.h"
 #include "Qt/input.h"
