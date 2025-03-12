@@ -9,10 +9,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-
-      - name: Setup Emscripten toolchain
-        uses: mymindstorm/setup-emsdk@v14
-
       - name: Install dependencies
         run: |
           sudo apt update
