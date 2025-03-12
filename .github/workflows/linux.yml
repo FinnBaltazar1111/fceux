@@ -20,6 +20,10 @@ jobs:
           #mkdir -p /usr/include/bits
           #sudo tar xf bits.tar.gz /usr/include/bits
 
+      - name: Patch any filesystem errors before building
+        run: |
+          ln -s src/drivers/Qt/sdl.h src/drivers/Qt/SDL.h
+
       - name: Build
         run: |
           mkdir build
