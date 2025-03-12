@@ -8,7 +8,7 @@
 #include <QCursor>
 #include <QPaintEvent>
 #include <QResizeEvent>
-#include <sdl.h>
+#include </home/runner/work/fceux/fceux/src/drivers/Qt/sdl.h>
 
 #include "Qt/ConsoleViewerInterface.h"
 
